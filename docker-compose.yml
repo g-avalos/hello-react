@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  hello-world:
+    container_name: hola
+    image: orko2002/hola:latest
+    ports:
+      - 3001:3000

@@ -1,0 +1,18 @@
+# docker-compose usa el archivo docker-compose.yml por default
+# si lo ven se define la imagen, el nombre del contenedor y se pueden poner parametros
+# port para las puertos, volume para los directorios, enviroment para variables de entorno
+
+# para arrancar el compose
+docker-compose up -d 
+
+# el -d es daemon corre en background me suelta la consola
+# up es iniciar...
+# down es para bajarlos
+
+# en un yml puede haber muchos contenedores armados asi un compose orquesta varios dockers
+# Compose baja el docker y lo arranca haciendo el up -d, si esta corriendo y cambian el yml por ejemplo
+# con una version mas nueva no es necesario pararlos up -d baja el nuevo, baja el otro y lo recrea 
+
+# si no quieren poner docker-compose.yml y se llama archivo.yml usar
+docker-compose -f archivo.yml up -d
+

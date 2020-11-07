@@ -1,0 +1,39 @@
+# creo una imagen que se llama hora sin version asi que va latest
+docker build -t hola .
+
+# creo una imagen que se llama hora version 1.0.0
+docker build -t hola:1.0.0 .
+
+# Arranco el docker hola (sin version) y de nombre le pongo holaContendedor al contenedor
+docker run -p 3001:3000 --name holaContendedor hola
+
+# Paro el contenedor
+docker stop holaContendedor
+
+# Lo arranco nuevamente queda con la configuracion del run, o sea el run lo arranca y establece parametros -p etc... start solo lo arranca
+docker start holaContendedor
+
+# Exporto el docker a un tar 
+docker save hola -o hola.tar
+
+# Borro el contendedor
+docker rm holaContendedor
+
+# Borro la imagen
+docker rmi hola
+
+# Cargo la imagen desde el tar... esto es si no quiero usar o no puedo usar docker hub, sirve para lugares sin conexion se pone el tar en un pendrive
+docker load -i hola.tar
+
+# Le cambio el nombre a la imagen de hola a orko2002/hola (orko2002 es mi usuario de docker)
+docker tag hola orko2002/hola
+
+# Lo subo a docker hub a mi cuenta, por eso esta tageado
+docker push orko2002/hola
+
+# -- Aca si esta la imagen instalada la borro con rmi, si esta corriendo el contenedor lo paro con stop lo borro con rm antes
+# se puede usar --force en el rmi para forzar el borrado si esta en ejecucion no esta bueno usarlo...
+
+# Lo bajo de docker hub
+docker pull orko2002/hola
+
